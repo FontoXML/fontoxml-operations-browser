@@ -1,0 +1,16 @@
+{
+	"open-operation-browser": {
+		"initialData": {
+			"modalPrimaryButtonLabel": "t__Insert",
+			"modalTitle": "t__Select an operation"
+		},
+		"steps": [
+			{
+				"type": "modal/OperationBrowserModal"
+			},
+			{
+				"type": "operation"
+			}
+		]
+	}
+}
