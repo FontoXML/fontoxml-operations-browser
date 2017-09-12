@@ -10,7 +10,7 @@ const styles = {
 	].join(', ')
 };
 
-const OperationGridItem = ({ item, isDisabled, isSelected, onClick, onDoubleClick }) =>
+const OperationGridItem = ({ item, isDisabled, isSelected, onClick, onDoubleClick }) => (
 	<GridItem
 		isDisabled={isDisabled || item.isDisabled}
 		isSelected={isSelected}
@@ -21,9 +21,8 @@ const OperationGridItem = ({ item, isDisabled, isSelected, onClick, onDoubleClic
 			<ContainedImage src={item.image} />
 		</Flex>
 
-		<Text align="center">
-			{item.label}
-		</Text>
-	</GridItem>;
+		<Text align="center">{item.label}</Text>
+	</GridItem>
+);
 
 export default OperationGridItem;

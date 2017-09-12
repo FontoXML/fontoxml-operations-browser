@@ -9,14 +9,7 @@ import OperationsGridItem from './OperationsGridItem.jsx';
 
 const styles = scrollContainer('m');
 
-const handleRenderItem = ({
-	key,
-	item,
-	isDisabled,
-	isSelected,
-	onClick,
-	onDoubleClick
-}) =>
+const handleRenderItem = ({ key, item, isDisabled, isSelected, onClick, onDoubleClick }) => (
 	<OperationsGridItem
 		key={key}
 		isDisabled={isDisabled}
@@ -24,11 +17,12 @@ const handleRenderItem = ({
 		item={item}
 		onClick={onClick}
 		onDoubleClick={onDoubleClick}
-	/>;
+	/>
+);
 
-const OperationsGrid = ({ onItemClick, onItemDoubleClick, operations, selectedOperation }) =>
+const OperationsGrid = ({ onItemClick, onItemDoubleClick, operations, selectedOperation }) => (
 	<Flex applyCss={styles}>
-		{operations.length === 0 &&
+		{operations.length === 0 && (
 			<StateMessage
 				paddingSize="l"
 				visual="meh-o"
@@ -36,16 +30,19 @@ const OperationsGrid = ({ onItemClick, onItemDoubleClick, operations, selectedOp
 				message={t(
 					'We couldn’t find any suitable operations for your cursor position. Try again from another location in your document.'
 				)}
-			/>}
+			/>
+		)}
 
-		{operations.length !== 0 &&
+		{operations.length !== 0 && (
 			<Grid
 				items={operations}
 				selectedItem={selectedOperation}
 				onItemDoubleClick={onItemDoubleClick}
 				onItemClick={onItemClick}
 				renderItem={handleRenderItem}
-			/>}
-	</Flex>;
+			/>
+		)}
+	</Flex>
+);
 
 export default OperationsGrid;

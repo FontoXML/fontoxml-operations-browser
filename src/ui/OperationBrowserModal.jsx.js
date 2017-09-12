@@ -78,10 +78,11 @@ class OperationBrowserModal extends Component {
 							/>
 						</ModalContent>
 
-						{selectedOperation &&
+						{selectedOperation && (
 							<ModalContent flex="none">
 								<OperationPreview operation={selectedOperation} />
-							</ModalContent>}
+							</ModalContent>
+						)}
 					</ModalContent>
 				</ModalBody>
 

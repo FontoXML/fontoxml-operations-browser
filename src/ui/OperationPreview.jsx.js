@@ -13,7 +13,7 @@ const styles = [
 	}
 ];
 
-const OperationPreview = ({ operation }) =>
+const OperationPreview = ({ operation }) => (
 	<Flex applyCss={styles} flexDirection="column">
 		<OperationPreviewImage imageSrc={operation.image} />
 
@@ -22,11 +22,9 @@ const OperationPreview = ({ operation }) =>
 				{operation.label}
 			</Heading>
 
-			{operation.description &&
-				<Text align="center">
-					{operation.description}
-				</Text>}
+			{operation.description && <Text align="center">{operation.description}</Text>}
 		</Flex>
-	</Flex>;
+	</Flex>
+);
 
 export default OperationPreview;

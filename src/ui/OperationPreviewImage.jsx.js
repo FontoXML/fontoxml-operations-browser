@@ -15,9 +15,10 @@ const styles = [
 	}
 ];
 
-const OperationPreviewImage = ({ imageSrc }) =>
+const OperationPreviewImage = ({ imageSrc }) => (
 	<Flex flex="none" applyCss={styles}>
 		<ContainedImage src={imageSrc} />
-	</Flex>;
+	</Flex>
+);
 
 export default OperationPreviewImage;
