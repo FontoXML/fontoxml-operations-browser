@@ -17,18 +17,23 @@ import OperationsGrid from './OperationsGrid.jsx';
 import OperationPreview from './OperationPreview.jsx';
 
 function createViewModelsForOperations(operationData) {
-	return operationData.operations.map((operationDataModel, i) => ({
-		name: operationDataModel.operationName,
-		id: i,
-		label: operationDataModel.label || operationDataModel.operationName,
-		description: operationDataModel.description,
-		image: operationDataModel.image,
-		isDisabled:
-			operationsManager.getOperationState(operationDataModel.operationName, {
-				...operationData,
-				...operationDataModel.data
-			}).enabled === false
-	}));
+	return Promise.all(
+		operationData.operations.map((operationDataModel, i) =>
+			operationsManager
+				.getOperationState(operationDataModel.operationName, {
+					...operationData,
+					...operationDataModel.data
+				})
+				.then(operationState => ({
+					name: operationDataModel.operationName,
+					id: i,
+					label: operationDataModel.label || operationDataModel.operationName,
+					description: operationDataModel.description,
+					image: operationDataModel.image,
+					isDisabled: operationState.enabled === false
+				}))
+		)
+	);
 }
 
 class OperationBrowserModal extends Component {
@@ -41,23 +46,33 @@ class OperationBrowserModal extends Component {
 		}),
 		submitModal: PropTypes.func.isRequired
 	};
+	constructor(props) {
+		super(props);
 
-	displayedOperations = createViewModelsForOperations(this.props.data);
+		this.isMountedInDOM = true;
 
-	state = { selectedOperation: null };
-
-	handleOperationsGridItemClick = selectedOperation => this.setState({ selectedOperation });
-
-	handleSubmit = operation =>
-		this.props.submitModal({
-			...operation.data,
-			operationName: operation.name
+		createViewModelsForOperations(this.props.data).then(viewModels => {
+			if (!this.isMountedInDOM) {
+				return;
+			}
+			this.setState({ displayedOperations: viewModels });
 		});
 
-	handleSubmitButtonClick = () => this.handleSubmit(this.state.selectedOperation);
+		this.state = { selectedOperation: null, displayedOperations: [] };
 
+		this.handleOperationsGridItemClick = selectedOperation =>
+			this.setState({ selectedOperation });
+
+		this.handleSubmit = operation =>
+			this.props.submitModal({
+				...operation.data,
+				operationName: operation.name
+			});
+
+		this.handleSubmitButtonClick = () => this.handleSubmit(this.state.selectedOperation);
+	}
 	render() {
-		const { selectedOperation } = this.state;
+		const { selectedOperation, displayedOperations } = this.state;
 		const {
 			cancelModal,
 			data: { modalIcon, modalPrimaryButtonLabel, modalTitle }
@@ -73,7 +88,7 @@ class OperationBrowserModal extends Component {
 							<OperationsGrid
 								onItemClick={this.handleOperationsGridItemClick}
 								onItemDoubleClick={this.handleSubmit}
-								operations={this.displayedOperations}
+								operations={displayedOperations}
 								selectedOperation={selectedOperation}
 							/>
 						</ModalContent>
@@ -98,6 +113,10 @@ class OperationBrowserModal extends Component {
 				</ModalFooter>
 			</Modal>
 		);
+	}
+
+	componentWillUnmount() {
+		this.isMountedInDOM = false;
 	}
 }
 
