@@ -1,5 +1,38 @@
 {
 	"open-operation-browser": {
+		"__documentation": {
+			"summary": "Opens the operations browser.",
+			"fontosdk": true,
+			"params": [
+				{
+					"name": "operations",
+					"type": "Object[]",
+					"description": [
+						"The operations to be shown in the browser. See the list below for which properties should or can be present on this object.",
+						" * `operationName`: The name of the operation to be executed when the user selects this operation in the browser.",
+						" * `data`: (Optional) The data to be passed to the operation when executed.",
+						" * `label`: (Optional) The label to be shown for this operation, defaults to the operation name.",
+						" * `description`: The description to be shown in the preview panel for this operation.",
+						" * `image`: The image url to be shown for this operation."
+					]
+				},
+				{
+					"name": "modalIcon",
+					"type": "string",
+					"description": "(Optional) The icon being shown at the top of the modal. The value should be a valid font-awsome icon name."
+				},
+				{
+					"name": "modalPrimaryButtonLabel",
+					"type": "string",
+					"description": "(Optional) The label for the primary button. Defaults to `t__Insert`."
+				},
+				{
+					"name": "modalTitle",
+					"type": "string",
+					"description": "(Optional) The title being shown at the top of the modal. Defaults to `t__Select an operation`."
+				}
+			]
+		},
 		"initialData": {
 			"modalPrimaryButtonLabel": "t__Insert",
 			"modalTitle": "t__Select an operation"
