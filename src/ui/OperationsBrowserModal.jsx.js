@@ -60,14 +60,28 @@ class OperationsBrowserModal extends Component {
 
 		this.state = { selectedOperation: null, displayedOperations: [] };
 
-		this.handleOperationGridItemClick = selectedOperation =>
-			this.setState({ selectedOperation });
-
 		this.handleSubmit = operation =>
 			this.props.submitModal({
 				...operation.data,
 				operationName: operation.name
 			});
+
+		this.handleKeyDown = event => {
+			const { selectedOperation } = this.state;
+			switch (event.key) {
+				case 'Escape':
+					this.props.cancelModal();
+					break;
+				case 'Enter':
+					if (selectedOperation && !selectedOperation.isDisabled) {
+						this.handleSubmit(selectedOperation);
+					}
+					break;
+			}
+		};
+
+		this.handleOperationGridItemClick = selectedOperation =>
+			this.setState({ selectedOperation });
 
 		this.handleSubmitButtonClick = () => this.handleSubmit(this.state.selectedOperation);
 	}
@@ -79,7 +93,7 @@ class OperationsBrowserModal extends Component {
 		} = this.props;
 
 		return (
-			<Modal size="m">
+			<Modal size="m" onKeyDown={this.handleKeyDown}>
 				<ModalHeader icon={modalIcon || null} title={modalTitle} />
 
 				<ModalBody>
