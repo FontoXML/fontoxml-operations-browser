@@ -1,5 +1,5 @@
 {
-	"open-operation-browser": {
+	"open-operations-browser-modal": {
 		"__documentation": {
 			"summary": "Opens the operations browser.",
 			"fontosdk": true,
@@ -39,7 +39,7 @@
 		},
 		"steps": [
 			{
-				"type": "modal/OperationBrowserModal"
+				"type": "modal/OperationsBrowserModal"
 			},
 			{
 				"type": "operation"

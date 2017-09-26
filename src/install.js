@@ -1,15 +1,15 @@
 define([
 	'fontoxml-modular-ui/uiManager',
 
-	'./ui/OperationBrowserModal.jsx'
+	'./ui/OperationsBrowserModal.jsx'
 ], function (
 	uiManager,
 
-	OperationBrowserModal
+	OperationsBrowserModal
 ) {
 	'use strict';
 
 	return function install () {
-		uiManager.registerReactComponent('OperationBrowserModal', OperationBrowserModal);
+		uiManager.registerReactComponent('OperationsBrowserModal', OperationsBrowserModal);
 	};
 });

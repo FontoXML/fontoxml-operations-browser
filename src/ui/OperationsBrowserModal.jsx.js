@@ -36,7 +36,7 @@ function createViewModelsForOperations(operationData) {
 	);
 }
 
-class OperationBrowserModal extends Component {
+class OperationsBrowserModal extends Component {
 	static propTypes = {
 		cancelModal: PropTypes.func.isRequired,
 		data: PropTypes.shape({
@@ -60,7 +60,7 @@ class OperationBrowserModal extends Component {
 
 		this.state = { selectedOperation: null, displayedOperations: [] };
 
-		this.handleOperationsGridItemClick = selectedOperation =>
+		this.handleOperationGridItemClick = selectedOperation =>
 			this.setState({ selectedOperation });
 
 		this.handleSubmit = operation =>
@@ -86,7 +86,7 @@ class OperationBrowserModal extends Component {
 					<ModalContent>
 						<ModalContent>
 							<OperationsGrid
-								onItemClick={this.handleOperationsGridItemClick}
+								onItemClick={this.handleOperationGridItemClick}
 								onItemDoubleClick={this.handleSubmit}
 								operations={displayedOperations}
 								selectedOperation={selectedOperation}
@@ -120,4 +120,4 @@ class OperationBrowserModal extends Component {
 	}
 }
 
-export default OperationBrowserModal;
+export default OperationsBrowserModal;

@@ -5,12 +5,12 @@ import t from 'fontoxml-localization/t';
 import { Flex, Grid, StateMessage } from 'fontoxml-vendor-fds/components';
 import { scrollContainer } from 'fontoxml-vendor-fds/system';
 
-import OperationsGridItem from './OperationsGridItem.jsx';
+import OperationGridItem from './OperationGridItem.jsx';
 
 const styles = scrollContainer('m');
 
 const handleRenderItem = ({ key, item, isDisabled, isSelected, onClick, onDoubleClick }) => (
-	<OperationsGridItem
+	<OperationGridItem
 		key={key}
 		isDisabled={isDisabled}
 		isSelected={isSelected}
