@@ -1,6 +1,6 @@
 # Add-on fontoxml-operations-browser
 
-This add-on exposes the {@link operation/open-operation-browser} operation for opening an operation browser. This browser allows the user to browse through different operations and select one operation to be executed. This, for example, this can be used to let the user choose between different question types (as can be found in the DITA learing module) to be inserted, each having its own unique insert operation.
+This add-on exposes the {@link operation/open-operations-browser-modal} operation for opening an operation browser. This browser allows the user to browse through different operations and select one operation to be executed. This, for example, this can be used to let the user choose between different question types (as can be found in the DITA learing module) to be inserted, each having its own unique insert operation.
 
 ## Getting started
 
@@ -12,7 +12,7 @@ This browser can be used by adding the following operation step to your operatio
 
 ```
 {
-    "type": "operation/open-operations-browser"
+    "type": "operation/open-operations-browser-modal"
 }
 ```
 
@@ -20,4 +20,4 @@ The selectable operations are determined by the `operations` property. This prop
 
 The icon, primary button label and title for this modal can be set with the `modalIcon`, `modalPrimaryButtonLabel`, and `modalTitle` properties.
 
-For more information, see {@link operation/open-operation-browser}.
+For more information, see {@link operation/open-operations-browser-modal}.
