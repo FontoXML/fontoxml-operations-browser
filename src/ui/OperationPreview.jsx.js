@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Flex, Heading, Text } from 'fontoxml-vendor-fds/components';
-import { scrollContainer } from 'fontoxml-vendor-fds/system';
+import { Flex, Heading, Text } from 'fds/components';
+import { scrollContainer } from 'fds/system';
 
 import OperationPreviewImage from './OperationPreviewImage.jsx';
 

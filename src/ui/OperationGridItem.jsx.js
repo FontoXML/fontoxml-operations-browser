@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ContainedImage, Flex, GridItem, Text } from 'fontoxml-vendor-fds/components';
+import { ContainedImage, Flex, GridItem, Text } from 'fds/components';
 
 const styles = {
 	boxShadow: [

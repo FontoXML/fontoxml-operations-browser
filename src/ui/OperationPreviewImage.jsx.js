@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { ContainedImage, Flex } from 'fontoxml-vendor-fds/components';
-import { marginVertical } from 'fontoxml-vendor-fds/system';
+import { ContainedImage, Flex } from 'fds/components';
+import { marginVertical } from 'fds/system';
 
 const styles = [
 	marginVertical('l'),

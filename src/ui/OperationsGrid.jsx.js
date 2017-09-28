@@ -1,9 +1,8 @@
 import React from 'react';
 
+import { Flex, Grid, StateMessage } from 'fds/components';
+import { scrollContainer } from 'fds/system';
 import t from 'fontoxml-localization/t';
-
-import { Flex, Grid, StateMessage } from 'fontoxml-vendor-fds/components';
-import { scrollContainer } from 'fontoxml-vendor-fds/system';
 
 import OperationGridItem from './OperationGridItem.jsx';
 
