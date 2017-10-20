@@ -3,6 +3,7 @@
 		"__documentation": {
 			"summary": "Opens the operations browser.",
 			"fontosdk": true,
+			"category": "add-on/fontoxml-operations-browser",
 			"params": [
 				{
 					"name": "operations",

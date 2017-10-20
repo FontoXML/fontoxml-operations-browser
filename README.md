@@ -1,4 +1,6 @@
-# Add-on fontoxml-operations-browser
+category: add-on/fontoxml-operations-browser
+
+# Add-on operations browser (fontoxml-operations-browser)
 
 This add-on exposes the {@link operation/open-operations-browser-modal} operation for opening an operation browser. This browser allows the user to browse through different operations and select one operation to be executed. This, for example, this can be used to let the user choose between different question types (as can be found in the DITA learing module) to be inserted, each having its own unique insert operation.
 
