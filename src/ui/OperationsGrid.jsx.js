@@ -8,10 +8,10 @@ import OperationGridItem from './OperationGridItem.jsx';
 
 const styles = scrollContainer('m');
 
-const handleRenderItem = ({ key, item, isDisabled, isSelected, onClick, onDoubleClick }) => (
+const handleRenderItem = ({ key, item, isSelected, onClick, onDoubleClick }) => (
 	<OperationGridItem
 		key={key}
-		isDisabled={isDisabled}
+		isDisabled={item.isDisabled}
 		isSelected={isSelected}
 		item={item}
 		onClick={onClick}
