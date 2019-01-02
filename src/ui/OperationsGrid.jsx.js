@@ -1,12 +1,9 @@
 import React from 'react';
 
-import { Flex, Grid, StateMessage } from 'fds/components';
-import { scrollContainer } from 'fds/system';
+import { Block, Grid, StateMessage } from 'fds/components';
 import t from 'fontoxml-localization/t';
 
 import OperationGridItem from './OperationGridItem.jsx';
-
-const styles = scrollContainer('m');
 
 const handleRenderItem = ({ key, item, isSelected, onClick, onDoubleClick }) => (
 	<OperationGridItem
@@ -20,7 +17,7 @@ const handleRenderItem = ({ key, item, isSelected, onClick, onDoubleClick }) => 
 );
 
 const OperationsGrid = ({ onItemClick, onItemDoubleClick, operations, selectedOperation }) => (
-	<Flex applyCss={styles}>
+	<Block flex="1" isScrollContainer>
 		{operations.length === 0 && (
 			<StateMessage
 				paddingSize="l"
@@ -41,7 +38,7 @@ const OperationsGrid = ({ onItemClick, onItemDoubleClick, operations, selectedOp
 				renderItem={handleRenderItem}
 			/>
 		)}
-	</Flex>
+	</Block>
 );
 
 export default OperationsGrid;
