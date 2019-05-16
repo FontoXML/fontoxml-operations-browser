@@ -1,15 +1,6 @@
-define([
-	'fontoxml-modular-ui/uiManager',
+import uiManager from 'fontoxml-modular-ui/src/uiManager.js';
+import OperationsBrowserModal from './ui/OperationsBrowserModal.jsx';
 
-	'./ui/OperationsBrowserModal.jsx'
-], function (
-	uiManager,
-
-	OperationsBrowserModal
-) {
-	'use strict';
-
-	return function install () {
-		uiManager.registerReactComponent('OperationsBrowserModal', OperationsBrowserModal);
-	};
-});
+export default function install() {
+	uiManager.registerReactComponent('OperationsBrowserModal', OperationsBrowserModal);
+}

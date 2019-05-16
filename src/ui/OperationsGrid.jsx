@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Block, Grid, StateMessage } from 'fds/components';
-import t from 'fontoxml-localization/t';
+import t from 'fontoxml-localization/src/t.js';
 
 import OperationGridItem from './OperationGridItem.jsx';
 

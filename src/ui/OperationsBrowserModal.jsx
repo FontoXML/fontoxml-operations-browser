@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from 'fds/components';
-import t from 'fontoxml-localization/t';
-import operationsManager from 'fontoxml-operations/operationsManager';
+import t from 'fontoxml-localization/src/t.js';
+import operationsManager from 'fontoxml-operations/src/operationsManager.js';
 
 import OperationsGrid from './OperationsGrid.jsx';
 import OperationPreview from './OperationPreview.jsx';
