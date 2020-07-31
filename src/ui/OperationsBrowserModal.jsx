@@ -18,6 +18,7 @@ function createViewModelsForOperations(operationData) {
 				})
 				.then(operationState => ({
 					name: operationDataModel.operationName,
+					data: operationDataModel.data,
 					id: i,
 					label: operationDataModel.label || operationDataModel.operationName,
 					description: operationDataModel.description,
