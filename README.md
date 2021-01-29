@@ -25,3 +25,13 @@ The selectable operations are determined by the `operations` property. This prop
 The icon, primary button label and title for this modal can be set with the `modalIcon`, `modalPrimaryButtonLabel`, and `modalTitle` properties.
 
 For more information, see {@link operation/open-operations-browser-modal}.
+
+# Contributing
+
+This package can serve as a base for custom versions of the operations browser. It can be forked by
+checking it out directly in the `packages` folder of an editor. When making a fork, consider keeping
+it up-to-date with new Fonto Editor versions when they release.
+
+We highly appreciate pull requests if you find a bug. For more general improvements or new features,
+please file a [support.fontoxml.com](support request). That way, we can think along and make sure an
+improvement is made in a way that benefits all users of this package.
