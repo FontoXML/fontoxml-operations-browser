@@ -1,6 +1,6 @@
+import { Block, Grid, StateMessage } from 'fds/components';
 import React from 'react';
 
-import { Block, Grid, StateMessage } from 'fds/components';
 import t from 'fontoxml-localization/src/t';
 
 import OperationGridItem from './OperationGridItem';

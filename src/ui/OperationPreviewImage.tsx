@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { ContainedImage, Flex } from 'fds/components';
 import { marginVertical } from 'fds/system';
+import React from 'react';
 
 const styles = [
 	marginVertical('l'),

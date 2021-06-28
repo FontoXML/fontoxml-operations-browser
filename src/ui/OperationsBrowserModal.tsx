@@ -1,6 +1,3 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-
 import {
 	Button,
 	Modal,
@@ -9,15 +6,18 @@ import {
 	ModalFooter,
 	ModalHeader,
 } from 'fds/components';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
 import t from 'fontoxml-localization/src/t';
 import operationsManager from 'fontoxml-operations/src/operationsManager';
 
-import OperationsGrid from './OperationsGrid';
 import OperationPreview from './OperationPreview';
+import OperationsGrid from './OperationsGrid';
 
-function createViewModelsForOperations(operationData) {
+async function createViewModelsForOperations(operationData) {
 	return Promise.all(
-		operationData.operations.map((operationDataModel, i) =>
+		operationData.operations.map(async (operationDataModel, i) =>
 			operationsManager
 				.getOperationState(operationDataModel.operationName, {
 					...operationData,
@@ -48,6 +48,7 @@ class OperationsBrowserModal extends Component {
 		}),
 		submitModal: PropTypes.func.isRequired,
 	};
+
 	constructor(props) {
 		super(props);
 
@@ -82,12 +83,14 @@ class OperationsBrowserModal extends Component {
 			}
 		};
 
-		this.handleOperationGridItemClick = (selectedOperation) =>
+		this.handleOperationGridItemClick = (selectedOperation) => {
 			this.setState({ selectedOperation });
+		};
 
 		this.handleSubmitButtonClick = () =>
 			this.handleSubmit(this.state.selectedOperation);
 	}
+
 	render() {
 		const { selectedOperation, displayedOperations } = this.state;
 		const {

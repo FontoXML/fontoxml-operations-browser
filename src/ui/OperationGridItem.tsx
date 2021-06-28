@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { ContainedImage, Flex, GridItem, Text } from 'fds/components';
+import React from 'react';
 
 const styles = {
 	boxShadow: [

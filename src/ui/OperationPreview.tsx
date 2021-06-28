@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { Flex, Heading, Text } from 'fds/components';
 import { scrollContainer } from 'fds/system';
+import React from 'react';
 
 import OperationPreviewImage from './OperationPreviewImage';
 
