@@ -10,9 +10,9 @@ const styles = [
 		boxShadow: [
 			'0 0 0 2px white',
 			'0 0 0 3px rgba(0,0,0,.25)',
-			'0 8px 8px -4px rgba(0,0,0,.25)'
-		].join(', ')
-	}
+			'0 8px 8px -4px rgba(0,0,0,.25)',
+		].join(', '),
+	},
 ];
 
 const OperationPreviewImage = ({ imageSrc }) => (

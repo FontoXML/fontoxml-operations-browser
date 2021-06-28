@@ -1,11 +1,17 @@
 import React from 'react';
 
 import { Block, Grid, StateMessage } from 'fds/components';
-import t from 'fontoxml-localization/src/t.js';
+import t from 'fontoxml-localization/src/t';
 
-import OperationGridItem from './OperationGridItem.jsx';
+import OperationGridItem from './OperationGridItem';
 
-const handleRenderItem = ({ key, item, isSelected, onClick, onDoubleClick }) => (
+const handleRenderItem = ({
+	key,
+	item,
+	isSelected,
+	onClick,
+	onDoubleClick,
+}) => (
 	<OperationGridItem
 		key={key}
 		isDisabled={item.isDisabled}
@@ -16,7 +22,12 @@ const handleRenderItem = ({ key, item, isSelected, onClick, onDoubleClick }) => 
 	/>
 );
 
-const OperationsGrid = ({ onItemClick, onItemDoubleClick, operations, selectedOperation }) => (
+const OperationsGrid = ({
+	onItemClick,
+	onItemDoubleClick,
+	operations,
+	selectedOperation,
+}) => (
 	<Block flex="1" isScrollContainer>
 		{operations.length === 0 && (
 			<StateMessage

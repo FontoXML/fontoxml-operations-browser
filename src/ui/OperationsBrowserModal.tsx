@@ -1,12 +1,19 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from 'fds/components';
-import t from 'fontoxml-localization/src/t.js';
-import operationsManager from 'fontoxml-operations/src/operationsManager.js';
+import {
+	Button,
+	Modal,
+	ModalBody,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+} from 'fds/components';
+import t from 'fontoxml-localization/src/t';
+import operationsManager from 'fontoxml-operations/src/operationsManager';
 
-import OperationsGrid from './OperationsGrid.jsx';
-import OperationPreview from './OperationPreview.jsx';
+import OperationsGrid from './OperationsGrid';
+import OperationPreview from './OperationPreview';
 
 function createViewModelsForOperations(operationData) {
 	return Promise.all(
@@ -14,16 +21,18 @@ function createViewModelsForOperations(operationData) {
 			operationsManager
 				.getOperationState(operationDataModel.operationName, {
 					...operationData,
-					...operationDataModel.data
+					...operationDataModel.data,
 				})
-				.then(operationState => ({
+				.then((operationState) => ({
 					name: operationDataModel.operationName,
 					data: operationDataModel.data,
 					id: i,
-					label: operationDataModel.label || operationDataModel.operationName,
+					label:
+						operationDataModel.label ||
+						operationDataModel.operationName,
 					description: operationDataModel.description,
 					image: operationDataModel.image,
-					isDisabled: operationState.enabled === false
+					isDisabled: operationState.enabled === false,
 				}))
 		)
 	);
@@ -35,16 +44,16 @@ class OperationsBrowserModal extends Component {
 		data: PropTypes.shape({
 			modalIcon: PropTypes.string,
 			modalPrimaryButtonLabel: PropTypes.string.isRequired,
-			modalTitle: PropTypes.string.isRequired
+			modalTitle: PropTypes.string.isRequired,
 		}),
-		submitModal: PropTypes.func.isRequired
+		submitModal: PropTypes.func.isRequired,
 	};
 	constructor(props) {
 		super(props);
 
 		this.isMountedInDOM = true;
 
-		createViewModelsForOperations(this.props.data).then(viewModels => {
+		createViewModelsForOperations(this.props.data).then((viewModels) => {
 			if (!this.isMountedInDOM) {
 				return;
 			}
@@ -53,13 +62,13 @@ class OperationsBrowserModal extends Component {
 
 		this.state = { selectedOperation: null, displayedOperations: [] };
 
-		this.handleSubmit = operation =>
+		this.handleSubmit = (operation) =>
 			this.props.submitModal({
 				...operation.data,
-				operationName: operation.name
+				operationName: operation.name,
 			});
 
-		this.handleKeyDown = event => {
+		this.handleKeyDown = (event) => {
 			const { selectedOperation } = this.state;
 			switch (event.key) {
 				case 'Escape':
@@ -73,16 +82,17 @@ class OperationsBrowserModal extends Component {
 			}
 		};
 
-		this.handleOperationGridItemClick = selectedOperation =>
+		this.handleOperationGridItemClick = (selectedOperation) =>
 			this.setState({ selectedOperation });
 
-		this.handleSubmitButtonClick = () => this.handleSubmit(this.state.selectedOperation);
+		this.handleSubmitButtonClick = () =>
+			this.handleSubmit(this.state.selectedOperation);
 	}
 	render() {
 		const { selectedOperation, displayedOperations } = this.state;
 		const {
 			cancelModal,
-			data: { modalIcon, modalPrimaryButtonLabel, modalTitle }
+			data: { modalIcon, modalPrimaryButtonLabel, modalTitle },
 		} = this.props;
 
 		return (
@@ -102,7 +112,9 @@ class OperationsBrowserModal extends Component {
 
 						{selectedOperation && (
 							<ModalContent flex="none">
-								<OperationPreview operation={selectedOperation} />
+								<OperationPreview
+									operation={selectedOperation}
+								/>
 							</ModalContent>
 						)}
 					</ModalContent>
@@ -114,7 +126,9 @@ class OperationsBrowserModal extends Component {
 					<Button
 						type="primary"
 						label={modalPrimaryButtonLabel}
-						isDisabled={!selectedOperation || selectedOperation.isDisabled}
+						isDisabled={
+							!selectedOperation || selectedOperation.isDisabled
+						}
 						onClick={this.handleSubmitButtonClick}
 					/>
 				</ModalFooter>

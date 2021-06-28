@@ -3,14 +3,14 @@ import React from 'react';
 import { Flex, Heading, Text } from 'fds/components';
 import { scrollContainer } from 'fds/system';
 
-import OperationPreviewImage from './OperationPreviewImage.jsx';
+import OperationPreviewImage from './OperationPreviewImage';
 
 const styles = [
 	scrollContainer('m'),
 	{
 		minWidth: 0,
-		maxWidth: '22rem'
-	}
+		maxWidth: '22rem',
+	},
 ];
 
 const OperationPreview = ({ operation }) => (
@@ -22,7 +22,9 @@ const OperationPreview = ({ operation }) => (
 				{operation.label}
 			</Heading>
 
-			{operation.description && <Text align="center">{operation.description}</Text>}
+			{operation.description && (
+				<Text align="center">{operation.description}</Text>
+			)}
 		</Flex>
 	</Flex>
 );
