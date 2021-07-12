@@ -6,7 +6,6 @@ import {
 	ModalFooter,
 	ModalHeader,
 } from 'fds/components';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import t from 'fontoxml-localization/src/t';
@@ -38,17 +37,17 @@ async function createViewModelsForOperations(operationData) {
 	);
 }
 
-class OperationsBrowserModal extends Component {
-	static propTypes = {
-		cancelModal: PropTypes.func.isRequired,
-		data: PropTypes.shape({
-			modalIcon: PropTypes.string,
-			modalPrimaryButtonLabel: PropTypes.string.isRequired,
-			modalTitle: PropTypes.string.isRequired,
-		}),
-		submitModal: PropTypes.func.isRequired,
+type Props = {
+	cancelModal(...args: unknown[]): unknown;
+	data?: {
+		modalIcon?: string;
+		modalPrimaryButtonLabel: string;
+		modalTitle: string;
 	};
+	submitModal(...args: unknown[]): unknown;
+};
 
+class OperationsBrowserModal extends Component<Props> {
 	constructor(props) {
 		super(props);
 
