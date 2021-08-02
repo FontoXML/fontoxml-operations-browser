@@ -8,6 +8,7 @@ import {
 } from 'fds/components';
 import React, { Component } from 'react';
 
+import type { ModalProps } from 'fontoxml-fx/src/types';
 import t from 'fontoxml-localization/src/t';
 import operationsManager from 'fontoxml-operations/src/operationsManager';
 
@@ -37,17 +38,13 @@ async function createViewModelsForOperations(operationData) {
 	);
 }
 
-type Props = {
-	cancelModal(...args: unknown[]): unknown;
-	data?: {
+class OperationsBrowserModal extends Component<
+	ModalProps<{
 		modalIcon?: string;
 		modalPrimaryButtonLabel: string;
 		modalTitle: string;
-	};
-	submitModal(...args: unknown[]): unknown;
-};
-
-class OperationsBrowserModal extends Component<Props> {
+	}>
+> {
 	constructor(props) {
 		super(props);
 
@@ -62,11 +59,12 @@ class OperationsBrowserModal extends Component<Props> {
 
 		this.state = { selectedOperation: null, displayedOperations: [] };
 
-		this.handleSubmit = (operation) =>
+		this.handleSubmit = (operation) => {
 			this.props.submitModal({
 				...operation.data,
 				operationName: operation.name,
 			});
+		};
 
 		this.handleKeyDown = (event) => {
 			const { selectedOperation } = this.state;
