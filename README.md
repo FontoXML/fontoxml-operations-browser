@@ -1,5 +1,6 @@
 ---
 category: add-on/fontoxml-operations-browser
+fontosdk: true
 ---
 
 # Operations browser library
