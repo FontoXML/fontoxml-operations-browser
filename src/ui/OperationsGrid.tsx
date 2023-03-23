@@ -1,6 +1,14 @@
-import { Block, Grid, StateMessage } from 'fds/components';
-import React from 'react';
+import * as React from 'react';
 
+import {
+	Block,
+	Grid,
+	StateMessage,
+} from 'fontoxml-design-system/src/components';
+import type {
+	FdsOnItemClickCallback,
+	FdsOnItemDoubleClickCallback,
+} from 'fontoxml-design-system/src/types';
 import t from 'fontoxml-localization/src/t';
 
 import OperationGridItem from './OperationGridItem';
@@ -22,7 +30,14 @@ const handleRenderItem = ({
 	/>
 );
 
-const OperationsGrid = ({
+type Props = {
+	onItemClick: FdsOnItemClickCallback;
+	onItemDoubleClick: FdsOnItemDoubleClickCallback;
+	operations: $TSFixMeAny[];
+	selectedOperation: $TSFixMeAny;
+};
+
+const OperationsGrid: React.FC<Props> = ({
 	onItemClick,
 	onItemDoubleClick,
 	operations,

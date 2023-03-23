@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import {
 	Button,
 	Modal,
@@ -5,9 +7,7 @@ import {
 	ModalContent,
 	ModalFooter,
 	ModalHeader,
-} from 'fds/components';
-import React, { Component } from 'react';
-
+} from 'fontoxml-design-system/src/components';
 import type { ModalProps } from 'fontoxml-fx/src/types';
 import t from 'fontoxml-localization/src/t';
 import operationsManager from 'fontoxml-operations/src/operationsManager';
@@ -38,14 +38,14 @@ async function createViewModelsForOperations(operationData) {
 	);
 }
 
-class OperationsBrowserModal extends Component<
+class OperationsBrowserModal extends React.Component<
 	ModalProps<{
 		modalIcon?: string;
 		modalPrimaryButtonLabel: string;
 		modalTitle: string;
 	}>
 > {
-	constructor(props) {
+	public constructor(props) {
 		super(props);
 
 		this.isMountedInDOM = true;
@@ -88,7 +88,7 @@ class OperationsBrowserModal extends Component<
 			this.handleSubmit(this.state.selectedOperation);
 	}
 
-	render() {
+	public override render(): React.ReactNode {
 		const { selectedOperation, displayedOperations } = this.state;
 		const {
 			cancelModal,
@@ -136,7 +136,7 @@ class OperationsBrowserModal extends Component<
 		);
 	}
 
-	componentWillUnmount() {
+	public override componentWillUnmount(): void {
 		this.isMountedInDOM = false;
 	}
 }

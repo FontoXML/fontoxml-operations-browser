@@ -1,6 +1,7 @@
-import { Flex, Heading, Text } from 'fds/components';
-import { scrollContainer } from 'fds/system';
-import React from 'react';
+import * as React from 'react';
+
+import { Flex, Heading, Text } from 'fontoxml-design-system/src/components';
+import { scrollContainer } from 'fontoxml-design-system/src/system';
 
 import OperationPreviewImage from './OperationPreviewImage';
 
@@ -12,7 +13,11 @@ const styles = [
 	},
 ];
 
-const OperationPreview = ({ operation }) => (
+type Props = {
+	operation: $TSFixMeAny;
+};
+
+const OperationPreview: React.FC<Props> = ({ operation }) => (
 	<Flex applyCss={styles} flexDirection="column">
 		<OperationPreviewImage imageSrc={operation.image} />
 

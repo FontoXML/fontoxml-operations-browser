@@ -1,6 +1,7 @@
-import { ContainedImage, Flex } from 'fds/components';
-import { marginVertical } from 'fds/system';
-import React from 'react';
+import * as React from 'react';
+
+import { ContainedImage, Flex } from 'fontoxml-design-system/src/components';
+import { marginVertical } from 'fontoxml-design-system/src/system';
 
 const styles = [
 	marginVertical('l'),
@@ -14,7 +15,11 @@ const styles = [
 	},
 ];
 
-const OperationPreviewImage = ({ imageSrc }) => (
+type Props = {
+	imageSrc: string;
+};
+
+const OperationPreviewImage: React.FC<Props> = ({ imageSrc }) => (
 	<Flex flex="none" applyCss={styles}>
 		<ContainedImage src={imageSrc} />
 	</Flex>

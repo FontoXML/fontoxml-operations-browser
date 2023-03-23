@@ -1,5 +1,17 @@
-import { ContainedImage, Flex, GridItem, Text } from 'fds/components';
-import React from 'react';
+import * as React from 'react';
+
+import {
+	ContainedImage,
+	Flex,
+	GridItem,
+	Text,
+} from 'fontoxml-design-system/src/components';
+import type {
+	FdsIsDisabled,
+	FdsIsSelected,
+	FdsOnClickCallback,
+	FdsOnDoubleClickCallback,
+} from 'fontoxml-design-system/src/types';
 
 const styles = {
 	boxShadow: [
@@ -9,7 +21,15 @@ const styles = {
 	].join(', '),
 };
 
-const OperationGridItem = ({
+type Props = {
+	isDisabled: FdsIsDisabled;
+	isSelected: FdsIsSelected;
+	item: $TSFixMeAny;
+	onClick: FdsOnClickCallback;
+	onDoubleClick: FdsOnDoubleClickCallback;
+};
+
+const OperationGridItem: React.FC<Props> = ({
 	item,
 	isDisabled,
 	isSelected,
