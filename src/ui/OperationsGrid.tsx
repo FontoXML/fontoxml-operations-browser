@@ -11,6 +11,7 @@ import type {
 } from 'fontoxml-design-system/src/types';
 import t from 'fontoxml-localization/src/t';
 
+import type { OperationViewModel } from '../types';
 import OperationGridItem from './OperationGridItem';
 
 const handleRenderItem = ({
@@ -33,8 +34,8 @@ const handleRenderItem = ({
 type Props = {
 	onItemClick: FdsOnItemClickCallback;
 	onItemDoubleClick: FdsOnItemDoubleClickCallback;
-	operations: $TSFixMeAny[];
-	selectedOperation: $TSFixMeAny;
+	operations: OperationViewModel[];
+	selectedOperation: OperationViewModel;
 };
 
 const OperationsGrid: React.FC<Props> = ({

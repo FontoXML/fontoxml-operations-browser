@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Flex, Heading, Text } from 'fontoxml-design-system/src/components';
 import { scrollContainer } from 'fontoxml-design-system/src/system';
 
+import type { OperationViewModel } from '../types';
 import OperationPreviewImage from './OperationPreviewImage';
 
 const styles = [
@@ -14,7 +15,7 @@ const styles = [
 ];
 
 type Props = {
-	operation: $TSFixMeAny;
+	operation: OperationViewModel;
 };
 
 const OperationPreview: React.FC<Props> = ({ operation }) => (
