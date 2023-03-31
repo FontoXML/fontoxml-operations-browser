@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type { FC } from 'react';
 
 import {
 	Block,
@@ -38,7 +38,7 @@ type Props = {
 	selectedOperation: OperationViewModel;
 };
 
-const OperationsGrid: React.FC<Props> = ({
+const OperationsGrid: FC<Props> = ({
 	onItemClick,
 	onItemDoubleClick,
 	operations,

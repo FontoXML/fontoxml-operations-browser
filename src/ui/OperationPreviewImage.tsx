@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type { FC } from 'react';
 
 import { ContainedImage, Flex } from 'fontoxml-design-system/src/components';
 import { marginVertical } from 'fontoxml-design-system/src/system';
@@ -19,7 +19,7 @@ type Props = {
 	imageSrc: string;
 };
 
-const OperationPreviewImage: React.FC<Props> = ({ imageSrc }) => (
+const OperationPreviewImage: FC<Props> = ({ imageSrc }) => (
 	<Flex flex="none" applyCss={styles}>
 		<ContainedImage src={imageSrc} />
 	</Flex>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type { FC } from 'react';
 
 import { Flex, Heading, Text } from 'fontoxml-design-system/src/components';
 import { scrollContainer } from 'fontoxml-design-system/src/system';
@@ -18,7 +18,7 @@ type Props = {
 	operation: OperationViewModel;
 };
 
-const OperationPreview: React.FC<Props> = ({ operation }) => (
+const OperationPreview: FC<Props> = ({ operation }) => (
 	<Flex applyCss={styles} flexDirection="column">
 		<OperationPreviewImage imageSrc={operation.image} />
 

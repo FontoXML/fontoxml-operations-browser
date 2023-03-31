@@ -1,4 +1,5 @@
-import * as React from 'react';
+import type { FC } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
 	Button,
@@ -55,20 +56,20 @@ type Props = ModalProps<
 	{ operationName: string }
 >;
 
-const OperationsBrowserModal: React.FC<Props> = ({
+const OperationsBrowserModal: FC<Props> = ({
 	cancelModal,
 	data,
 	submitModal,
 }) => {
-	const isMountedInDOM = React.useRef(false);
+	const isMountedInDOM = useRef(false);
 
 	const [selectedOperation, setSelectedOperation] =
-		React.useState<OperationViewModel | null>(null);
-	const [displayedOperations, setDisplayedOperations] = React.useState<
+		useState<OperationViewModel | null>(null);
+	const [displayedOperations, setDisplayedOperations] = useState<
 		OperationViewModel[]
 	>([]);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		isMountedInDOM.current = true;
 
 		return () => {
@@ -76,7 +77,7 @@ const OperationsBrowserModal: React.FC<Props> = ({
 		};
 	}, []);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		void createViewModelsForOperations(data).then((viewModels) => {
 			if (!isMountedInDOM.current) {
 				return;
@@ -85,7 +86,7 @@ const OperationsBrowserModal: React.FC<Props> = ({
 		});
 	}, [data]);
 
-	const handleSubmit = React.useCallback(
+	const handleSubmit = useCallback(
 		(operationViewModel: OperationViewModel) => {
 			submitModal({
 				...operationViewModel.data,
@@ -95,7 +96,7 @@ const OperationsBrowserModal: React.FC<Props> = ({
 		[submitModal]
 	);
 
-	const handleKeyDown = React.useCallback<FdsOnKeyDownCallback>(
+	const handleKeyDown = useCallback<FdsOnKeyDownCallback>(
 		(event) => {
 			switch (event.key) {
 				case 'Escape':
@@ -111,23 +112,22 @@ const OperationsBrowserModal: React.FC<Props> = ({
 		[cancelModal, handleSubmit, selectedOperation]
 	);
 
-	const handleOperationGridItemClick =
-		React.useCallback<FdsOnItemClickCallback>(
-			(item: OperationViewModel) => {
-				setSelectedOperation(item);
-			},
-			[]
-		);
+	const handleOperationGridItemClick = useCallback<FdsOnItemClickCallback>(
+		(item: OperationViewModel) => {
+			setSelectedOperation(item);
+		},
+		[]
+	);
 	const handleOperationGridItemDoubleClick =
-		React.useCallback<FdsOnItemDoubleClickCallback>(
+		useCallback<FdsOnItemDoubleClickCallback>(
 			(item: OperationViewModel) => {
 				handleSubmit(item);
 			},
 			[handleSubmit]
 		);
 
-	const handleSubmitButtonClick = React.useCallback(() => {
-		handleSubmit(selectedOperation!);
+	const handleSubmitButtonClick = useCallback(() => {
+		handleSubmit(selectedOperation);
 	}, [handleSubmit, selectedOperation]);
 
 	return (

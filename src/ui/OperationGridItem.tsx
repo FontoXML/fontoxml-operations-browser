@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type { FC } from 'react';
 
 import {
 	ContainedImage,
@@ -29,7 +29,7 @@ type Props = {
 	onDoubleClick: FdsOnDoubleClickCallback;
 };
 
-const OperationGridItem: React.FC<Props> = ({
+const OperationGridItem: FC<Props> = ({
 	item,
 	isDisabled,
 	isSelected,
